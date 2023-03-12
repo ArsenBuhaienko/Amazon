@@ -13,7 +13,7 @@ public class Main {
         ChromeOptions options = new ChromeOptions();
 
         // Задание аргумента
-        options.addArguments("--whitelisted-ips=\"\"");
+        options.addArguments("--remote-allow-origins=*");
 
         // Создание объекта WebDriver с настройками ChromeOptions
         WebDriver driver = new ChromeDriver(options);
