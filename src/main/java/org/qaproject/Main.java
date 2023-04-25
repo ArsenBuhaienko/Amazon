@@ -16,27 +16,7 @@ public class Main {
     String chromeParameters = "--remote-allow-origins=*";
     String pathToChromeDriver = "D:\\MyProjects\\MyProject\\src\\main\\resources\\chromeWebDriver\\chromedriver.exe";
 
-    @Test
-    public void existComputers(){
-        // Установка пути к драйверу Chrome
-        System.setProperty("webdriver.chrome.driver",pathToChromeDriver);
-        // Создание объекта ChromeOptions
-        options = new ChromeOptions();
-        // Задание аргумента
-        options.addArguments(chromeParameters);
-        // Создание объекта WebDriver с настройками ChromeOptions
-         driver = new ChromeDriver(options);
-        // Открытие страницы
-        driver.get(url);
-        // создание локатора типа xPath
-        driver.findElement(By.xpath("//a[@id='nav-hamburger-menu']")).click();
-        int size = driver.findElements(By.xpath("//div[contains(text(), 'Computers')]")).size();
-        Assert.assertEquals(size, 1);
-        // Закрытие браузера
-        driver.quit();
-    }
-    @Test
-    public void existElectronics(){
+    public void initialization(){
         // Установка пути к драйверу Chrome
         System.setProperty("webdriver.chrome.driver",pathToChromeDriver);
         // Создание объекта ChromeOptions
@@ -47,6 +27,20 @@ public class Main {
         driver = new ChromeDriver(options);
         // Открытие страницы
         driver.get(url);
+    }
+    @Test
+    public void existComputers(){
+        initialization();
+        // создание локатора типа xPath
+        driver.findElement(By.xpath("//a[@id='nav-hamburger-menu']")).click();
+        int size = driver.findElements(By.xpath("//div[contains(text(), 'Computers')]")).size();
+        Assert.assertEquals(size, 1);
+        // Закрытие браузера
+        driver.quit();
+    }
+    @Test
+    public void existElectronics(){
+        initialization();
         // создание локатора типа xPath
         driver.findElement(By.xpath("//a[@id='nav-hamburger-menu']")).click();
         int size = driver.findElements(By.xpath("//div[contains(text(), 'Electronics')]")).size();
