@@ -30,6 +30,21 @@ public class SideBarMenu {
         Assert.assertEquals(size.getWidth(), 348);
     }
 
+    @Test
+    public void Electronics() {
+        //amazonPage.clickMenuButton();
+        amazonPage.findCElectronicsCategory();
+        amazonPage.countElectronicsCategory();
+        amazonPage.sizeElectronicsCategory();
+
+        int count = amazonPage.countElectronicsCategory();
+        Assert.assertEquals(count, 1);
+
+        Dimension size = amazonPage.sizeElectronicsCategory();
+        Assert.assertEquals(size.getHeight(), 44);
+        Assert.assertEquals(size.getWidth(), 348);
+    }
+
     @AfterTest
     public void tearDown() {
         amazonPage.tearDown();

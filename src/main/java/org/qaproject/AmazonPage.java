@@ -16,12 +16,20 @@ public class AmazonPage {
     private final WebDriverWait wait;
     private ChromeOptions options;
     private static final String URL = "https://www.amazon.com";
+    private static final String CHROME_DRIVER_ARGUMENTS = "--remote-allow-origins=*";
     private static final String CHROME_DRIVER_PATH = "D:\\MyProjects\\MyProject\\src\\main\\resources\\chromeWebDriver\\chromedriver.exe";
+
+    private static final String menuButtonXPath = "nav-hamburger-menu";
+    private static final String computersCategoryXPath = "//div[contains(text(), 'Computers')]";
+    private static final String sizeComputersCategoryXPath = "//*[@id='hmenu-content']/ul[1]/li[8]";
+
+    private static final String electronicsCategoryXPath = "//div[contains(text(), 'Electronics')]";
+    private static final String sizeElectronicsCategoryXPath = "//*[@id=\"hmenu-content\"]/ul[1]/li[7]";
 
     public AmazonPage() {
         System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments(CHROME_DRIVER_ARGUMENTS);
         this.driver = new ChromeDriver(options);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
@@ -35,20 +43,34 @@ public class AmazonPage {
     }
 
     public void clickMenuButton() {
-        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nav-hamburger-menu")));
+        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(menuButtonXPath)));
         menuButton.click();
     }
 
     public void findComputersCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hmenu-content']/ul[1]/li[8]")));
+        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(computersCategoryXPath)));
     }
 
     public int countComputersCategory() {
-        return driver.findElements(By.xpath("//div[contains(text(), 'Computers')]")).size();
+        return driver.findElements(By.xpath(computersCategoryXPath)).size();
     }
 
     public Dimension sizeComputersCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hmenu-content']/ul[1]/li[8]")));
+        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sizeComputersCategoryXPath)));
+        Dimension computersCategorySize = computersCategory.getSize();
+        return computersCategorySize;
+    }
+
+    public void findCElectronicsCategory() {
+        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(electronicsCategoryXPath)));
+    }
+
+    public int countElectronicsCategory() {
+        return driver.findElements(By.xpath(electronicsCategoryXPath)).size();
+    }
+
+    public Dimension sizeElectronicsCategory() {
+        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sizeElectronicsCategoryXPath)));
         Dimension computersCategorySize = computersCategory.getSize();
         return computersCategorySize;
     }
