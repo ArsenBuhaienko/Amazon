@@ -18,7 +18,6 @@ public class SideBarMenuTest {
     @Test
     public void computers() {
         amazonPage.clickMenuButton();
-        amazonPage.findComputersCategory();
         amazonPage.countComputersCategory();
         amazonPage.sizeComputersCategory();
 
@@ -32,8 +31,6 @@ public class SideBarMenuTest {
 
     @Test
     public void electronics() {
-        //amazonPage.clickMenuButton();
-        amazonPage.findCElectronicsCategory();
         amazonPage.countElectronicsCategory();
         amazonPage.sizeElectronicsCategory();
 
