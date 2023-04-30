@@ -6,39 +6,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
-import java.time.Duration;
 
 import static java.time.Duration.ofSeconds;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class AmazonPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private ChromeOptions options;
-    private static final String URL = "https://www.amazon.com";
-    private static final String CHROME_DRIVER_ARGUMENTS = "--remote-allow-origins=*";
-    private static final String CHROME_DRIVER_PATH = "D:\\MyProjects\\MyProject\\src\\main\\resources\\chromeWebDriver\\chromedriver.exe";
-
-    private static final String menuButtonXPath = "nav-hamburger-menu";
-    private static final String computersCategoryXPath = "//div[contains(text(), 'Computers')]";
-    private static final String sizeComputersCategoryXPath = "//*[@id='hmenu-content']/ul[1]/li[8]";
-
-    private static final String electronicsCategoryXPath = "//div[contains(text(), 'Electronics')]";
-    private static final String sizeElectronicsCategoryXPath = "//*[@id=\"hmenu-content\"]/ul[1]/li[7]";
 
     public AmazonPage() {
-        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
-        options = new ChromeOptions();
-        options.addArguments(CHROME_DRIVER_ARGUMENTS);
+        System.setProperty("webdriver.chrome.driver", Constans.CHROME_DRIVER_PATH);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments(Constans.CHROME_DRIVER_ARGUMENTS);
         this.driver = new ChromeDriver(options);
         this.wait = new WebDriverWait(driver, ofSeconds(10));
     }
 
     public void setUp() {
-        driver.get(URL);
+        driver.get(Constans.URL);
     }
 
     public void tearDown() {
@@ -46,35 +33,26 @@ public class AmazonPage {
     }
 
     public void clickMenuButton() {
-        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(menuButtonXPath)));
+        WebElement menuButton = wait.until(visibilityOfElementLocated(By.id(Constans.MENU_BUTTON_XPATH)));
         menuButton.click();
     }
 
-    public void findComputersCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(computersCategoryXPath)));
-    }
-
     public int countComputersCategory() {
-        return driver.findElements(By.xpath(computersCategoryXPath)).size();
+        return driver.findElements(By.xpath(Constans.COMPUTERS_CATEGORY_XPATH)).size();
     }
 
     public Dimension sizeComputersCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sizeComputersCategoryXPath)));
+        WebElement computersCategory = wait.until(visibilityOfElementLocated(By.xpath(Constans.SIZE_COMPUTERS_CATEGORY_XPATH)));
         return computersCategory.getSize();
     }
 
-    public void findCElectronicsCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(electronicsCategoryXPath)));
-    }
-
     public int countElectronicsCategory() {
-        return driver.findElements(By.xpath(electronicsCategoryXPath)).size();
+        return driver.findElements(By.xpath(Constans.ELECTRONICS_CATEGORY_XPATH)).size();
     }
 
     public Dimension sizeElectronicsCategory() {
-        WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sizeElectronicsCategoryXPath)));
-        Dimension computersCategorySize = computersCategory.getSize();
-        return computersCategorySize;
+        WebElement computersCategory = wait.until(visibilityOfElementLocated(By.xpath(Constans.SIZE_ELECTRONICS_CATEGORY_XPATH)));
+        return computersCategory.getSize();
     }
 
 }
