@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SideBarMenu {
+public class SideBarMenuTest {
     private AmazonPage amazonPage;
 
     @BeforeTest
@@ -16,7 +16,7 @@ public class SideBarMenu {
     }
 
     @Test
-    public void Computers() {
+    public void computers() {
         amazonPage.clickMenuButton();
         amazonPage.findComputersCategory();
         amazonPage.countComputersCategory();
@@ -31,7 +31,7 @@ public class SideBarMenu {
     }
 
     @Test
-    public void Electronics() {
+    public void electronics() {
         //amazonPage.clickMenuButton();
         amazonPage.findCElectronicsCategory();
         amazonPage.countElectronicsCategory();

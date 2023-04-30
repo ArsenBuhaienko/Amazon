@@ -8,8 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
+
+import static java.time.Duration.ofSeconds;
 
 public class AmazonPage {
     private final WebDriver driver;
@@ -31,7 +34,7 @@ public class AmazonPage {
         options = new ChromeOptions();
         options.addArguments(CHROME_DRIVER_ARGUMENTS);
         this.driver = new ChromeDriver(options);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, ofSeconds(10));
     }
 
     public void setUp() {
@@ -74,4 +77,5 @@ public class AmazonPage {
         Dimension computersCategorySize = computersCategory.getSize();
         return computersCategorySize;
     }
+
 }
