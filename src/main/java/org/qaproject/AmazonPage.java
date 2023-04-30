@@ -60,8 +60,7 @@ public class AmazonPage {
 
     public Dimension sizeComputersCategory() {
         WebElement computersCategory = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(sizeComputersCategoryXPath)));
-        Dimension computersCategorySize = computersCategory.getSize();
-        return computersCategorySize;
+        return computersCategory.getSize();
     }
 
     public void findCElectronicsCategory() {
