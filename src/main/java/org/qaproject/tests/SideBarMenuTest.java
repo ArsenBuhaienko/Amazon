@@ -14,7 +14,6 @@ public class SideBarMenuTest {
         amazonPage = new AmazonPage();
         amazonPage.setUp();
     }
-
     @Test
     public void computers() {
         amazonPage.clickMenuButton();
