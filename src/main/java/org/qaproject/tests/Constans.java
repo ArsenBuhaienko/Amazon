@@ -1,4 +1,4 @@
-package org.qaproject;
+package org.qaproject.tests;
 
 public class Constans {
     public static final String URL = "https://www.amazon.com";

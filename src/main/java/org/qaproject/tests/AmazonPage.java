@@ -1,4 +1,4 @@
-package org.qaproject;
+package org.qaproject.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
