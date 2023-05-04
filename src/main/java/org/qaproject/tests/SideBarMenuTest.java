@@ -2,6 +2,7 @@ package org.qaproject.tests;
 
 import org.openqa.selenium.Dimension;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -44,5 +45,6 @@ public class SideBarMenuTest {
     @AfterTest
     public void tearDown() {
         amazonPage.tearDown();
+        Reporter.log("Closing the browser", true);
     }
 }
