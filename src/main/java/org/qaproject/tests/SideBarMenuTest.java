@@ -14,7 +14,7 @@ public class SideBarMenuTest {
         amazonPage = new AmazonPage();
         amazonPage.setUp();
     }
-    @Test
+    @Test(priority = 1)
     public void computers() {
         amazonPage.clickMenuButton();
         amazonPage.countComputersCategory();
@@ -28,7 +28,7 @@ public class SideBarMenuTest {
         Assert.assertEquals(size.getWidth(), 348);
     }
 
-    @Test
+    @Test(priority = 1)
     public void electronics() {
         amazonPage.countElectronicsCategory();
         amazonPage.sizeElectronicsCategory();
